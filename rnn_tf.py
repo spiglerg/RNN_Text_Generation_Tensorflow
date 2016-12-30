@@ -45,7 +45,7 @@ class ModelNetwork:
 			# LSTM
 			# TODO: migrate to state_is_tuple = True
 			self.lstm_cell = tf.nn.rnn_cell.BasicLSTMCell(self.lstm_size, forget_bias=1.0, state_is_tuple=False)
-			self.lstm = tf.nn.rnn_cell.MultiRNNCell([self.lstm_cell] * self.num_layers)
+			self.lstm = tf.nn.rnn_cell.MultiRNNCell([self.lstm_cell] * self.num_layers, state_is_tuple=False)
 
 			# Iteratively compute output of recurrent network
 			outputs, self.lstm_new_state = tf.nn.dynamic_rnn(self.lstm, self.xinput, initial_state=self.lstm_init_value)
@@ -168,9 +168,9 @@ net = ModelNetwork(in_size = in_size,
 					learning_rate = 0.003,
 					name = "char_rnn_network")
 
-sess.run( tf.initialize_all_variables() )
+sess.run(tf.global_variables_initializer())
 
-saver = tf.train.Saver(tf.all_variables())
+saver = tf.train.Saver(tf.global_variables())
 
 
 
