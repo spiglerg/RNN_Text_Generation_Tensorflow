@@ -47,7 +47,7 @@ class ModelNetwork:
 			self.lstm = tf.nn.rnn_cell.MultiRNNCell([self.lstm_cell] * self.num_layers, state_is_tuple=False)
 
 			# Iteratively compute output of recurrent network
-			outputs, self.lstm_new_state = tf.nn.dynamic_rnn(self.lstm, self.xinput, dtype=tf.float32)
+			outputs, self.lstm_new_state = tf.nn.dynamic_rnn(self.lstm, self.xinput, initial_state=self.lstm_init_value, dtype=tf.float32)
 
 			# Linear activation (FC layer on top of the LSTM net)
 			self.rnn_out_W = tf.Variable(tf.random_normal( (self.lstm_size, self.out_size), stddev=0.01 ))
