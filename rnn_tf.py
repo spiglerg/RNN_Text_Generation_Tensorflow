@@ -137,7 +137,7 @@ with open('data/shakespeare.txt', 'r') as f:
 data_ = data_.lower()
 
 ## Convert to 1-hot coding
-vocab = list(set(data_))
+vocab = sorted(list(set(data_)))
 
 data = embed_to_vocab(data_, vocab)
 
