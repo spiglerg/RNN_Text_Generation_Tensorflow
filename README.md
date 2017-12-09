@@ -4,13 +4,13 @@ Text generation using a RNN (LSTM) using Tensorflow.
 
 
 ## Usage
-To train the model:
-1. Set the textfile you want to use to train the network in the code ("with open('data/shakespeare.txt', 'r') as f:")
 
-2. 
-    $ python rnn_tf.py
+To train the model you can set the textfile you want to use to train the network by using command line options:
 
-3. Run the network with the starting prefix you want to use to generate text:
-    $ python rnn_tf.py saved/model.ckpt "The "
+Run the network in train mode:
 
+  $ python rnn_tf.py --input_file=data/shakespeare.txt --ckpt_model="saved/model.ckpt" --mode=train
 
+Run the network to generate text:
+
+  $ python rnn_tf.py --input_file=data/shakespeare.txt --ckpt_model="saved/model.ckpt" --test_prefix="The " --mode=talk
