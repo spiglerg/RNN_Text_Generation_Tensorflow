@@ -275,7 +275,7 @@ def main():
                 print("batch: {}  loss: {}  speed: {} batches / s".format(
                     i, cst, 100 / diff
                 ))
-        saver.save(sess, "saved/model.ckpt")
+                saver.save(sess, ckpt_file)
     elif args.mode == "talk":
         # 2) GENERATE LEN_TEST_TEXT CHARACTERS USING THE TRAINED NETWORK
         saver.restore(sess, ckpt_file)
